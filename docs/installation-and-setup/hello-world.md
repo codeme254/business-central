@@ -192,9 +192,7 @@ The object ID `50100` must fall within the ID range declared in `app.json` and m
 
 You should see:
 
-```text
-Hello World! This is my first published app.
-```
+![Output](/hello-world.png)
 
 If the build or publishing process fails, inspect the VS Code **Problems** panel and the **Output** panel for the AL extension's error details.
 
