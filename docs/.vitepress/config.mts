@@ -20,7 +20,15 @@ export default defineConfig({
               { text: "Installing VS Code and AL Extensions", link: "/install-vs-code-and-al-extensions.md" },
               { text: "Hello World", link: "/hello-world.md" },
             ]
-          }
+          },
+          // {
+          //   text: "Setting Up Business Central Online for AL Development",
+          //   base: "/business-central-online/",
+          //   collapsed: true,
+          //   items: [
+          //     { text: "Getting Access to a BC Online Environment", link: "/getting-access-to-a-bc-online-environment.md" }
+          //   ]
+          // }
         ]
       }
     ],
