@@ -43,6 +43,18 @@ export default defineConfig({
               { text: "Triggers and When They Execute", link: "/triggers-and-when-they-execute.md" },
               { text: "Building, Publishing and Running an Extension", link: "/building-publishing-and-running-an-extension.md" },
             ]
+          },
+          {
+            text: "Variables, Data Types, Operators and Control Flow",
+            base: "/variables-data-types-operators-and-control-flow/",
+            collapsed: true,
+            items: [
+              { text: "Variables and Data Types", link: "/variables-and-data-types.md" },
+              { text: "Operators and Expressions", link: "/operators-and-expressions.md" },
+              { text: "Control Flow", link: "/control-flow.md" },
+              { text: "Collections", link: "/collections.md" },
+              { text: "Practical Exercises", link: "/practical-exercises.md" },
+            ]
           }
         ]
       }
