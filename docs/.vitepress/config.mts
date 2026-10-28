@@ -28,7 +28,22 @@ export default defineConfig({
           //   items: [
           //     { text: "Getting Access to a BC Online Environment", link: "/getting-access-to-a-bc-online-environment.md" }
           //   ]
-          // }
+          // },
+          {
+            text: "Your First AL Programs",
+            base: "/your-first-al-programs/",
+            collapsed: true,
+            items: [
+              { text: "What is AL", link: "/what-is-al.md" },
+              { text: "AL Syntax and Statement Structure", link: "/al-syntax-and-statement-structure.md" },
+              { text: "Namespaces and Identifiers", link: "/namespaces-and-identifiers.md" },
+              { text: "AL Objects and Object IDs", link: "/al-objects-and-object-ids.md" },
+              { text: "Comments and Naming Conventions", link: "/comments-and-naming-conventions.md" },
+              { text: "Message(), Error() and Confirm()", link: "/message-error-and-confirm.md" },
+              { text: "Triggers and When They Execute", link: "/triggers-and-when-they-execute.md" },
+              { text: "Building, Publishing and Running an Extension", link: "/building-publishing-and-running-an-extension.md" },
+            ]
+          }
         ]
       }
     ],
