@@ -55,6 +55,15 @@ export default defineConfig({
               { text: "Collections", link: "/collections.md" },
               { text: "Practical Exercises", link: "/practical-exercises.md" },
             ]
+          },
+          {
+            text: "Procedures",
+            collapsed: true,
+            base: "/procedures/",
+            items: [
+              { text: "Procedures", link: "/" },
+              { text: "Practical Exercises", link: "/practical-exercises.md" },
+            ]
           }
         ]
       }
