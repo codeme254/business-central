@@ -64,6 +64,22 @@ export default defineConfig({
               { text: "Procedures", link: "/" },
               { text: "Practical Exercises", link: "/practical-exercises.md" },
             ]
+          },
+          {
+            text: "Tables, Fields and Business Data",
+            collapsed: true,
+            base: "/tables-fields-and-business-data/",
+            items: [
+              { text: "Introduction", link: "/" },
+              { text: "Creating a Table", link: "/creating-a-table.md" },
+              { text: "An Overview of Pages in AL", link: "/pages-overview.md" },
+              { text: "Table Triggers", link: "/table-triggers.md" },
+              { text: "Table Extensions", link: "/table-extensions.md" },
+              { text: "Field Groups", link: "/field-groups.md" },
+              { text: "Relationship Between Tables", link: "/relationship-between-tables.md" },
+              { text: "Enums and Option Like Fields", link: "/enums-and-option-like-fields.md" },
+              { text: "DataClassification", link: "/dataclassification.md" },
+            ]
           }
         ]
       }
