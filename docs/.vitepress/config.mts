@@ -80,6 +80,23 @@ export default defineConfig({
               { text: "Enums and Option Like Fields", link: "/enums-and-option-like-fields.md" },
               { text: "DataClassification", link: "/dataclassification.md" },
             ]
+          },
+          {
+            text: "Pages and User Interfaces",
+            base: "/pages-and-user-interfaces/",
+            collapsed: true,
+            items: [
+              { text: "Page Objects", link: "/page-objects.md" },
+              { text: "Page Layout and Controls", link: "/page-layout-and-controls.md" },
+              { text: "Fields and Data Bindings", link: "/fields-and-data-bindings.md" },
+              { text: "Repeating Sections", link: "/repeating-sections.md" },
+              { text: "Actions and Action Groups", link: "/actions-and-action-groups.md" },
+              { text: "Page Triggers", link: "/page-triggers.md" },
+              { text: "Page Variables", link: "/page-variables.md" },
+              { text: "Source Table and Source Table View", link: "/sourcetable-and-sourcetableview.md" },
+              { text: "Page Extensions", link: "/page-extensions.md" },
+              // { text: "Page Types", link: "/page-types.md" },
+            ]
           }
         ]
       }
