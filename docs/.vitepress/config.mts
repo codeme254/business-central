@@ -108,7 +108,16 @@ export default defineConfig({
               { text: "Filtering Data", link: "/filtering-data.md" },
               { text: "Modifying Data", link: "/modifying-data.md" },
             ]
-          }
+          },
+          {
+            text: "Codeunits",
+            base: "/codeunits/",
+            collapsed: true,
+            items: [
+              { text: "What are codeunits", link: "/" },
+              { text: "Creating codeunits", link: "/creating-codeunits.md" },
+            ]
+          },
         ]
       }
     ],
