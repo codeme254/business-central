@@ -1,0 +1,74 @@
+import{U as e,W as t,nt as n,t as r}from"./chunks/framework.CPHJXLir.js";var i=JSON.parse(`{"title":"SourceTable and SourceTableView","description":"","frontmatter":{},"headers":[],"relativePath":"pages-and-user-interfaces/sourcetable-and-sourcetableview.md","filePath":"pages-and-user-interfaces/sourcetable-and-sourcetableview.md"}`),a={name:`pages-and-user-interfaces/sourcetable-and-sourcetableview.md`};function o(r,i,a,o,s,c){return n(),e(`div`,null,[...i[0]||=[t(`<h1 id="sourcetable-and-sourcetableview" tabindex="-1">SourceTable and SourceTableView <a class="header-anchor" href="#sourcetable-and-sourcetableview" aria-label="Permalink to “SourceTable and SourceTableView”">​</a></h1><h2 id="sourcetable" tabindex="-1">SourceTable <a class="header-anchor" href="#sourcetable" aria-label="Permalink to “SourceTable”">​</a></h2><p>The <code>SourceTable</code> property specifies the database table from which a page retrieves and displays records.</p><p>It establishes the data source for the page.</p><h3 id="syntax" tabindex="-1">Syntax <a class="header-anchor" href="#syntax" aria-label="Permalink to “Syntax”">​</a></h3><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTable = TableName;</span></span></code></pre></div><h3 id="example" tabindex="-1">Example <a class="header-anchor" href="#example" aria-label="Permalink to “Example”">​</a></h3><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>page 50100 ProductList</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    PageType = List;</span></span>
+<span class="line"><span>    SourceTable = Product;</span></span>
+<span class="line"><span>    ApplicationArea = All;</span></span>
+<span class="line"><span>    UsageCategory = Lists;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    layout</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>        area(Content)</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>            repeater(General)</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                field(&quot;No.&quot;; Rec.&quot;No.&quot;)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                field(Name; Rec.Name)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>In this example:</p><ul><li><code>SourceTable = Product</code> tells Business Central to use the <code>Product</code> table as the page&#39;s data source.</li><li><code>Rec</code> represents the current record from the <code>Product</code> table.</li><li>The fields displayed in the repeater are retrieved from that table.</li></ul><p><strong>Important:</strong> Not every page requires a <code>SourceTable</code>. Some page types, such as RoleCenter and API-related scenarios, have different requirements. Always check the requirements of the page type you&#39;re creating.</p><h2 id="sourcetableview" tabindex="-1">SourceTableView <a class="header-anchor" href="#sourcetableview" aria-label="Permalink to “SourceTableView”">​</a></h2><p>The <code>SourceTableView</code> property specifies the default view of the records displayed on a page.</p><p>It allows us to define:</p><ol><li><strong>Sorting:</strong> Which fields should determine the order of records.</li><li><strong>Sort order:</strong> Whether records should appear in ascending or descending order.</li><li><strong>Filtering:</strong> Which records should be included in the page&#39;s default view.</li></ol><h3 id="syntax-1" tabindex="-1">Syntax <a class="header-anchor" href="#syntax-1" aria-label="Permalink to “Syntax”">​</a></h3><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = sorting(FieldName1, FieldName2)</span></span>
+<span class="line"><span>                  order(ascending)</span></span>
+<span class="line"><span>                  where(FieldName3 = filter(Value));</span></span></code></pre></div><p>Let&#39;s look at each component.</p><h3 id="a-sorting" tabindex="-1">A. Sorting <a class="header-anchor" href="#a-sorting" aria-label="Permalink to “A. Sorting”">​</a></h3><p>The <code>sorting</code> keyword specifies the table key and fields used to sort records.</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = sorting(Name);</span></span></code></pre></div><p>This sorts records using the <code>Name</code> field in ascending order by default.</p><p>You can also specify multiple fields:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = sorting(Category, Name);</span></span></code></pre></div><p>Here, records are sorted by <code>Category</code> first and then by <code>Name</code> within each category.</p><h3 id="b-order" tabindex="-1">B. Order <a class="header-anchor" href="#b-order" aria-label="Permalink to “B. Order”">​</a></h3><p>The <code>order</code> keyword specifies the direction of sorting.</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = sorting(Name) order(descending);</span></span></code></pre></div><p>Available values:</p><table tabindex="0"><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody><tr><td><code>ascending</code></td><td>Sorts from lowest to highest, or A to Z.</td></tr><tr><td><code>descending</code></td><td>Sorts from highest to lowest, or Z to A.</td></tr></tbody></table><p>If you don&#39;t specify an order, ascending order is used.</p><h3 id="c-filtering" tabindex="-1">C. Filtering <a class="header-anchor" href="#c-filtering" aria-label="Permalink to “C. Filtering”">​</a></h3><p>The <code>where</code> keyword allows us to filter records based on specified conditions.</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = where(Status = filter(Active));</span></span></code></pre></div><p>This displays records whose <code>Status</code> field is <code>Active</code>.</p><p>You can combine multiple filters:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = where(</span></span>
+<span class="line"><span>    Status = filter(Active),</span></span>
+<span class="line"><span>    Inventory = filter(&gt; 0)</span></span>
+<span class="line"><span>);</span></span></code></pre></div><p>This displays products that are active and have inventory greater than zero.</p><p>You can also use filter expressions such as:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>SourceTableView = where(Inventory = filter(10..100));</span></span></code></pre></div><p>This includes products with inventory between 10 and 100, inclusive.</p><h2 id="putting-everything-together" tabindex="-1">Putting Everything Together <a class="header-anchor" href="#putting-everything-together" aria-label="Permalink to “Putting Everything Together”">​</a></h2><p>Let&#39;s create a page that displays only active products with available inventory, sorted alphabetically by name.</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>page 50100 AvailableProducts</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    PageType = List;</span></span>
+<span class="line"><span>    SourceTable = Product;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    SourceTableView = sorting(Name)</span></span>
+<span class="line"><span>                      order(ascending)</span></span>
+<span class="line"><span>                      where(</span></span>
+<span class="line"><span>                          Status = filter(Active),</span></span>
+<span class="line"><span>                          Inventory = filter(&gt; 0)</span></span>
+<span class="line"><span>                      );</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    ApplicationArea = All;</span></span>
+<span class="line"><span>    UsageCategory = Lists;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    layout</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>        area(Content)</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>            repeater(General)</span></span>
+<span class="line"><span>            {</span></span>
+<span class="line"><span>                field(&quot;No.&quot;; Rec.&quot;No.&quot;)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                field(Name; Rec.Name)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                field(Status; Rec.Status)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>                field(Inventory; Rec.Inventory)</span></span>
+<span class="line"><span>                {</span></span>
+<span class="line"><span>                    ApplicationArea = All;</span></span>
+<span class="line"><span>                }</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>When users open this page:</p><ol><li>Business Central retrieves records from the <code>Product</code> table.</li><li>It applies the specified filters.</li><li>It sorts the resulting records by <code>Name</code> in ascending order.</li><li>It displays the records in the list.</li></ol><h2 id="_4-important-things-to-remember" tabindex="-1">4. Important Things to Remember <a class="header-anchor" href="#_4-important-things-to-remember" aria-label="Permalink to “4. Important Things to Remember”">​</a></h2><ul><li><code>SourceTable</code> establishes the page&#39;s data source.</li><li><code>SourceTableView</code> defines the default sorting and filtering of that data source.</li><li><code>sorting()</code> uses fields belonging to a key defined on the source table. The fields must be specified in a valid key order.</li><li><code>order()</code> determines the sorting direction.</li><li><code>where()</code> applies filters to the source table.</li><li><code>SourceTableView</code> does not delete or modify records. It only controls which records appear in the page&#39;s default view.</li><li>Users may be able to change the displayed view using filters and sorting, depending on the page and its configuration.</li></ul><h2 id="further-reading" tabindex="-1">Further Reading <a class="header-anchor" href="#further-reading" aria-label="Permalink to “Further Reading”">​</a></h2><ul><li><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/properties/devenv-sourcetable-property" target="_blank" rel="noreferrer">SourceTable Property</a></li><li><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/properties/devenv-sourcetableview-pages-property" target="_blank" rel="noreferrer">SourceTableView Property</a></li></ul>`,50)]])}var s=r(a,[[`render`,o]]);export{i as __pageData,s as default};

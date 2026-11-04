@@ -1,0 +1,41 @@
+import{U as e,W as t,nt as n,t as r}from"./chunks/framework.CPHJXLir.js";var i=JSON.parse(`{"title":"Subscriber Attributes and Signatures","description":"","frontmatter":{},"headers":[],"relativePath":"events/subscriber-attributes-and-signatures.md","filePath":"events/subscriber-attributes-and-signatures.md"}`),a={name:`events/subscriber-attributes-and-signatures.md`};function o(r,i,a,o,s,c){return n(),e(`div`,null,[...i[0]||=[t(`<h1 id="subscriber-attributes-and-signatures" tabindex="-1">Subscriber Attributes and Signatures <a class="header-anchor" href="#subscriber-attributes-and-signatures" aria-label="Permalink to “Subscriber Attributes and Signatures”">​</a></h1><h2 id="subscriber-attributes" tabindex="-1">Subscriber Attributes <a class="header-anchor" href="#subscriber-attributes" aria-label="Permalink to “Subscriber Attributes”">​</a></h2><p>The <code>[EventSubscriber]</code> attribute tells Business Central which event a procedure should listen to.</p><p>Its syntax is:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[EventSubscriber(</span></span>
+<span class="line"><span>    ObjectType,</span></span>
+<span class="line"><span>    ObjectId,</span></span>
+<span class="line"><span>    EventName,</span></span>
+<span class="line"><span>    ElementName,</span></span>
+<span class="line"><span>    SkipOnMissingLicense,</span></span>
+<span class="line"><span>    SkipOnMissingPermission)]</span></span></code></pre></div><table tabindex="0"><thead><tr><th>Parameter</th><th>Meaning</th></tr></thead><tbody><tr><td><code>ObjectType</code></td><td>Type of object publishing the event (<code>Codeunit</code>, <code>Table</code>, <code>Page</code>, etc.).</td></tr><tr><td><code>ObjectId</code></td><td>ID or name of the publisher object.</td></tr><tr><td><code>EventName</code></td><td>Name of the event being subscribed to.</td></tr><tr><td><code>ElementName</code></td><td>Used for field-related trigger events; otherwise usually <code>&#39;&#39;</code>.</td></tr><tr><td><code>SkipOnMissingLicense</code></td><td>Whether to skip execution if the required license is missing.</td></tr><tr><td><code>SkipOnMissingPermission</code></td><td>Whether to skip execution if the required permission is missing.</td></tr></tbody></table><p><strong>Example:</strong></p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[EventSubscriber(</span></span>
+<span class="line"><span>    ObjectType::Codeunit,</span></span>
+<span class="line"><span>    Codeunit::CustomerEvents,</span></span>
+<span class="line"><span>    &#39;OnCustomerCreated&#39;,</span></span>
+<span class="line"><span>    &#39;&#39;,</span></span>
+<span class="line"><span>    false,</span></span>
+<span class="line"><span>    false)]</span></span></code></pre></div><p>This subscribes to <code>OnCustomerCreated</code> published by the <code>CustomerEvents</code> codeunit.</p><h2 id="subscriber-signatures" tabindex="-1">Subscriber Signatures <a class="header-anchor" href="#subscriber-signatures" aria-label="Permalink to “Subscriber Signatures”">​</a></h2><p>A subscriber&#39;s signature refers to its procedure declaration, particularly its parameters and their data types.</p><p><strong>Important rule:</strong> The subscriber must have the same parameters, in the same order and with matching data types, as the event publisher.</p><p>For example, our publisher:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[IntegrationEvent(false, false)]</span></span>
+<span class="line"><span>procedure OnCustomerCreated(CustomerNo: Code[20]; CustomerName: Text[100])</span></span>
+<span class="line"><span>begin</span></span>
+<span class="line"><span>end;</span></span></code></pre></div><p>Its subscriber:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[EventSubscriber(</span></span>
+<span class="line"><span>    ObjectType::Codeunit,</span></span>
+<span class="line"><span>    Codeunit::CustomerEvents,</span></span>
+<span class="line"><span>    &#39;OnCustomerCreated&#39;,</span></span>
+<span class="line"><span>    &#39;&#39;,</span></span>
+<span class="line"><span>    false,</span></span>
+<span class="line"><span>    false)]</span></span>
+<span class="line"><span>local procedure HandleCustomerCreated(</span></span>
+<span class="line"><span>    CustomerNo: Code[20];</span></span>
+<span class="line"><span>    CustomerName: Text[100])</span></span>
+<span class="line"><span>begin</span></span>
+<span class="line"><span>    Message(&#39;Created: %1 - %2&#39;, CustomerNo, CustomerName);</span></span>
+<span class="line"><span>end;</span></span></code></pre></div><p>Notice that both procedures have:</p><ul><li>Two parameters.</li><li>The same parameter order.</li><li>Matching data types.</li></ul><h3 id="what-about-var-parameters" tabindex="-1">What about <code>var</code> parameters? <a class="header-anchor" href="#what-about-var-parameters" aria-label="Permalink to “What about var parameters?”">​</a></h3><p>The <code>var</code> keyword indicates that a parameter is passed by reference, allowing the procedure to modify the original variable.</p><p>If the publisher declares a parameter using <code>var</code>, the subscriber must also declare the corresponding parameter using <code>var</code>.</p><p>For example:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[IntegrationEvent(false, false)]</span></span>
+<span class="line"><span>procedure OnBeforeCustomerInsert(var CustomerRec: Record Customer)</span></span>
+<span class="line"><span>begin</span></span>
+<span class="line"><span>end;</span></span></code></pre></div><p>Subscriber:</p><div class="language-al"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">al</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>[EventSubscriber(</span></span>
+<span class="line"><span>    ObjectType::Codeunit,</span></span>
+<span class="line"><span>    Codeunit::CustomerEvents,</span></span>
+<span class="line"><span>    &#39;OnBeforeCustomerInsert&#39;,</span></span>
+<span class="line"><span>    &#39;&#39;,</span></span>
+<span class="line"><span>    false,</span></span>
+<span class="line"><span>    false)]</span></span>
+<span class="line"><span>local procedure BeforeCustomerInsert(var CustomerRec: Record Customer)</span></span>
+<span class="line"><span>begin</span></span>
+<span class="line"><span>    CustomerRec.Name := &#39;Updated Customer&#39;;</span></span>
+<span class="line"><span>end;</span></span></code></pre></div><p>The subscriber can modify the record because it receives the parameter by reference.</p>`,26)]])}var s=r(a,[[`render`,o]]);export{i as __pageData,s as default};
