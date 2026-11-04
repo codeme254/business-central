@@ -97,6 +97,17 @@ export default defineConfig({
               { text: "Page Extensions", link: "/page-extensions.md" },
               // { text: "Page Types", link: "/page-types.md" },
             ]
+          },
+          {
+            text: "Records, Data Access, Filtering and Validation",
+            base: "/records-data-access-filtering-and-validation/",
+            collapsed: true,
+            items: [
+              { text: "The Record Data Type", link: "/record-data-type.md" },
+              { text: "Reading Data", link: "/reading-data.md" },
+              { text: "Filtering Data", link: "/filtering-data.md" },
+              { text: "Modifying Data", link: "/modifying-data.md" },
+            ]
           }
         ]
       }
