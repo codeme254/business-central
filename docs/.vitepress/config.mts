@@ -118,6 +118,20 @@ export default defineConfig({
               { text: "Creating codeunits", link: "/creating-codeunits.md" },
             ]
           },
+          {
+            text: "Events and Subscribers",
+            base: "/events/",
+            collapsed: true,
+            items: [
+              { text: "Event driven architecture", link: "/event-driven-architecture.md" },
+              { text: "Integration Events and Business Events", link: "/integration-events-and-business-events.md" },
+              { text: "Event Publishers", link: "/event-publishers.md" },
+              { text: "Event Subscribers", link: "/event-subscribers.md" },
+              { text: "Subscriber Attributes and Signatures", link: "/subscriber-attributes-and-signatures.md" },
+              { text: "Subscribing to Standard Business Central Events", link: "/subscribing-to-standard-business-central-events.md" },
+              { text: "Using Events to Extend Existing Business Logic", link: "/using-events-to-extend-business-logic.md" },
+            ]
+          }
         ]
       }
     ],
